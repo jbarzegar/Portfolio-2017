@@ -1,0 +1,44 @@
+@import '~style';
+
+.Nav {
+  background: transparent;
+  flex-wrap: nowrap;
+  left: 0;
+  -webkit-overflow-scrolling: touch;
+  overflow-x: auto;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.Nav ul {
+  flex: 1;
+  justify-content: space-between;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.Nav li {
+  flex: 0 0 auto;
+  text-align: center;
+}
+
+.link {
+  background: transparent;
+  color: $white;
+  cursor: pointer;
+  display: block;
+  flex: 1;
+  font-size: em(25);
+  font-weight: 700;
+  height: 100%;
+  padding: em(20) em(30);
+  text-decoration: none;
+  transition: ease 0.5s;
+  width: 100%;
+
+  &:hover {
+    background: rgba(#000, 0.2);
+  }
+}
