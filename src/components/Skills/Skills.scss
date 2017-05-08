@@ -1,6 +1,6 @@
 @import '~style';
 
-.Styles {
+.Skills {
   .cardContainer {
     justify-content: space-between;
   }
@@ -10,6 +10,7 @@
   background: $white;
   border-radius: 5px;
   box-shadow: 0 50px 60px rgba(#000, 0.4);
+  cursor: pointer;
   height: em(480);
   margin-bottom: em(45);
   position: relative;
@@ -28,10 +29,10 @@
   }
 }
 
-.card:hover,
-.card:focus {
+.showing {
   .lowerContainer {
     transform: translateY(0);
+    transition-duration: 0.5s;
   }
 
   i {
@@ -55,7 +56,7 @@
   right: 0;
   top: 0;
   transform: translateY(24.4em);
-  transition: transform ease 0.3s;
+  transition: transform ease 0.5s;
   will-change: transform;
 
   h3 {
@@ -91,6 +92,7 @@
 .libList {
   bottom: 0;
   left: 0;
+  margin: 0;
   position: absolute;
   right: 0;
   top: 0;

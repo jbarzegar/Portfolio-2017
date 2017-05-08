@@ -2,16 +2,15 @@ import { h } from 'preact';
 import styles from './Skills.scss';
 
 const handleClick = (event) => {
-    if (event.type === 'touchstart') {
-        // Don't trigger mouseenter even if they hold
-        event.stopImmediatePropagation();
-        // If $item is a link (<a>), don't go to said link on mobile, show menu instead
-        event.preventDefault();
+    const nodeName = event.target.parentElement.nodeName;
+    console.log(event.target.parentElement.nodeName);
+    if (nodeName === 'SECTION') {
+        event.target.parentElement.classList.toggle(styles.showing);
     }
 };
 
 const Skills = () => (
-    <div className={styles.Styles}>
+    <div className={styles.Skills}>
         <h2>The Toolkit.</h2>
         <section className={`flex flex-wrap ${styles.cardContainer}`}>
             <section className={`flex-col align-all-center ${styles.card} ${styles.javascriptCard}`} onClick={handleClick}>
