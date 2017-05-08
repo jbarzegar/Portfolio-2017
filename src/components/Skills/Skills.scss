@@ -1,0 +1,106 @@
+@import '~style';
+
+.Styles {
+  .cardContainer {
+    justify-content: space-between;
+  }
+};
+
+.card {
+  background: $white;
+  border-radius: 5px;
+  box-shadow: 0 50px 60px rgba(#000, 0.4);
+  height: em(480);
+  margin-bottom: em(45);
+  position: relative;
+  width: em(250);
+  @include responsive(sm) {
+    width: 100%;
+  }
+
+  i {
+    font-size: em(65);
+    transition: font-size ease 0.2s;
+  }
+
+  h3 {
+    font-size: em(30);
+  }
+}
+
+.card:hover,
+.card:focus {
+  .lowerContainer {
+    transform: translateY(0);
+  }
+
+  i {
+    font-size: em(0);
+  }
+
+  .libList li {
+    font-size: 2em;
+    opacity: 1;
+    transition-delay: 0.3s;
+
+    @include responsive(sm) {
+      font-size: 2.5em;
+    }
+  }
+}
+
+.lowerContainer {
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transform: translateY(24.4em);
+  transition: transform ease 0.3s;
+  will-change: transform;
+
+  h3 {
+    margin: 0;
+    padding: em(15) 0;
+    text-align: center;
+  }
+}
+
+.javascriptCard,
+.pythonCard,
+.devOpsCard,
+.frontEnd {
+  color: $white;
+}
+
+.javascriptCard {
+  background: linear-gradient(to top left, darken($js-yellow, 20%), lighten($js-yellow, 10%));
+}
+
+.pythonCard {
+  background: linear-gradient(to top left, $python-dark, $python-light);
+}
+
+.devOpsCard {
+  background: linear-gradient(to top left, $dev-ops-green, lighten($dev-ops-green, 10%));
+}
+
+.frontEnd {
+  background: linear-gradient(to top left, $html-orange, lighten($html-orange, 10%));
+}
+
+.libList {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+
+  li {
+    font-size: 0;
+    font-weight: 600;
+    opacity: 0;
+    padding: em(5) 0;
+    transition: all ease 0.4s;
+    transition-delay: 0s;
+  }
+}

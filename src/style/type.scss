@@ -1,0 +1,41 @@
+@import 'variables';
+@import 'mixins';
+@import 'functions';
+
+body {
+  color: $dark;
+  font-family: 'Poppins', sans-serif;
+};
+
+h1,
+h2 {
+  font-weight: 700;
+  letter-spacing: 5px;
+  text-transform: capitalize;
+}
+
+h2 {
+  -webkit-background-clip: text;
+  background-image: linear-gradient(to right, $brand-blue-primary, $brand-blue-lighter 60%);
+  color: transparent;
+  font-size: em(65);
+
+  span {
+    display: block;
+  }
+
+  @include responsive(sm) {
+    font-size: em(50);
+  }
+}
+
+p {
+  font-size: em(25);
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}

@@ -14,10 +14,8 @@
 
 .heading {
   font-size: em(70);
-  letter-spacing: 5px;
   line-height: 1.2;
   padding-left: em(24);
-  text-transform: capitalize;
   span { display: block; }
   @include responsive(md) {
     font-size: em(60);
@@ -32,9 +30,16 @@
 }
 
 .siteContainer {
-  padding: em(10) em(50);
+  padding: em(20) 0;
+}
 
-  p {
-    font-size: $dark;
+.innerWrap {
+  margin: 0 auto;
+  width: 75%;
+  @include responsive(lg) {
+    width: 80%;
+  }
+  @include responsive(sm) {
+    width: 80%;
   }
 }

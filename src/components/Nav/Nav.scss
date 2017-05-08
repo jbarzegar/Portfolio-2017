@@ -2,13 +2,13 @@
 
 .Nav {
   background: transparent;
+  bottom: 0;
   flex-wrap: nowrap;
   left: 0;
   -webkit-overflow-scrolling: touch;
   overflow-x: auto;
   position: absolute;
   right: 0;
-  top: 0;
 }
 
 .Nav ul {
@@ -31,7 +31,7 @@
   display: block;
   flex: 1;
   font-size: em(25);
-  font-weight: 700;
+  font-weight: 600;
   height: 100%;
   padding: em(20) em(30);
   text-decoration: none;

@@ -2,13 +2,14 @@ import { h } from 'preact';
 import styles from './Home.scss';
 
 import About from '../About/';
+import Skills from '../Skills';
 
 const Home = () => (
     <div className="Home">
         <section className={`flex align-center ${styles.Hero} ${styles.Landing}`}>
             <header>
                 <h1 className={styles.heading}>
-                    <span>Hi!</span>
+                    <span>Hi! &#128075;</span>
                     <span>I'm James.</span>
                     <span>I'm a Full Stack</span>
                     <span>Web Developer.</span>
@@ -16,7 +17,10 @@ const Home = () => (
             </header>
         </section>
         <div className={styles.siteContainer}>
-            <About />
+            <section className={styles.innerWrap}>
+                <About />
+                <Skills />
+            </section>
         </div>
     </div>
 );
