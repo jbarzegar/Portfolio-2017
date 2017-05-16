@@ -1,4 +1,5 @@
 @import '~style';
+@import '~style/type';
 
 * {
   box-sizing: border-box;
@@ -6,7 +7,16 @@
 
 body {
   display: block;
-  font-size: responsive;
+  font-size: 1vw;
+  @include responsive(lg) {
+    font-size: 1.3vw;
+  }
+  @include responsive(md) {
+    font-size: 1.5vw;
+  }
+  @include responsive(sm) {
+    font-size: 2.5vw;
+  }
 }
 
 /*.App {

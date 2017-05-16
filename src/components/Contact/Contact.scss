@@ -1,0 +1,32 @@
+@import '~style';
+
+.Contact h3 {
+  font-size: em(40);
+  margin: auto;
+  @include responsive(lg) {
+    margin: em(12) 0;
+  }
+}
+
+.innerContainer {
+  @include responsive(lg) {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+.email span {
+  display: block;
+}
+
+.emailText {
+  @extend %gradient-text;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.socials i {
+  @extend %gradient-text;
+  font-size: em(50);
+  margin-right: em(10);
+}

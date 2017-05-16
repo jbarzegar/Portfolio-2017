@@ -1,6 +1,7 @@
 @import 'variables';
 @import 'mixins';
 @import 'functions';
+@import 'components';
 
 body {
   color: $dark;
@@ -15,9 +16,7 @@ h2 {
 }
 
 h2 {
-  -webkit-background-clip: text;
-  background-image: linear-gradient(to right, $brand-blue-primary, $brand-blue-lighter 60%);
-  color: transparent;
+  @extend %gradient-text;
   font-size: em(65);
 
   span {
@@ -25,7 +24,7 @@ h2 {
   }
 
   @include responsive(sm) {
-    font-size: em(50);
+    font-size: em(40);
   }
 }
 
@@ -38,4 +37,9 @@ p {
 ul {
   list-style: none;
   padding: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
 }

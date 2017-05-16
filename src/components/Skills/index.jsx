@@ -2,17 +2,26 @@ import { h } from 'preact';
 import styles from './Skills.scss';
 
 const handleClick = (event) => {
-    const nodeName = event.target.parentElement.nodeName;
-    console.log(event.target.parentElement.nodeName);
-    if (nodeName === 'SECTION') {
-        event.target.parentElement.classList.toggle(styles.showing);
+    const cards = document.querySelectorAll(`.${styles.card}`);
+    const parent = event.target.parentElement;
+    if (parent.classList.contains(styles.showing)) {
+        parent.classList.remove(styles.showing);
+    } else {
+        // Loop through the 4 cards, check if they are showing their list
+        cards.forEach((card) => {
+            const isShowing = card.classList.contains(styles.showing);
+            // If the card is showing turn off the class
+            if (isShowing) card.classList.remove(styles.showing);
+        });
+        // Continue onto adding the class
+        parent.classList.add(styles.showing);
     }
 };
 
 const Skills = () => (
     <div className={styles.Skills}>
         <h2>The Toolkit.</h2>
-        <section className={`flex flex-wrap ${styles.cardContainer}`}>
+        <section className={`flex flex-wrap justify-sb`}>
             <section className={`flex-col align-all-center ${styles.card} ${styles.javascriptCard}`} onClick={handleClick}>
                 <i className="devicon-javascript-plain" />
                 <div className={styles.lowerContainer}>

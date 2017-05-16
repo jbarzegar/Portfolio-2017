@@ -16,7 +16,7 @@ module.exports = {
 	entry: './index.js',
 
 	output: {
-		path: path.resolve(__dirname, "build"),
+		path: path.resolve(__dirname, "dist"),
 		publicPath: '/',
 		filename: 'bundle.js'
 	},
@@ -66,10 +66,10 @@ module.exports = {
               loader: `postcss-loader`,
               options: {
                 plugins: () => [
-                  autoprefixer({ browsers: [ 'last 2 versions' ] }),
 									require('stylelint')(),
 									require('rucksack-css')(),
-									require('css-mqpacker')()
+									require('css-mqpacker')(),
+                  autoprefixer({ browsers: [ 'last 2 versions' ] })
                 ]
               }
             }
@@ -94,10 +94,10 @@ module.exports = {
               loader: `postcss-loader`,
               options: {
                 plugins: () => [
-                  autoprefixer({ browsers: [ 'last 2 versions' ] }),
 									require('stylelint')(),
 									require('rucksack-css')(),
-									require('css-mqpacker')()
+									require('css-mqpacker')(),
+                  autoprefixer({ browsers: [ 'last 2 versions' ] })
                 ]
               }
             }

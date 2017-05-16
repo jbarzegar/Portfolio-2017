@@ -1,0 +1,30 @@
+@import '~style';
+
+.Work {
+  h3 {
+    font-size: em(24);
+  }
+}
+
+.card {
+  @extend %card;
+  background: linear-gradient(to top left, darken(#d500f9, 15%), #d500f9);
+  color: $white;
+  flex: 1;
+  height: em(480);
+  @include responsive(sm) {
+    flex-basis: 100%;
+    max-width: 100%;
+  }
+
+  &:first-child {
+    margin-right: em(30);
+    @include responsive(sm) {
+      margin-right: 0;
+    }
+  }
+
+  h4 {
+    font-size: em(30);
+  }
+}

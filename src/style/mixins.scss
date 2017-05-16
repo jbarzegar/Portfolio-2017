@@ -1,3 +1,5 @@
+@import 'variables';
+
 @mixin fill() {
   height: 100%;
   left: 0;
@@ -15,6 +17,18 @@
     position: relative;
     transform: translateZ(0);
   }
+}
+
+@mixin gradient-text-fallback() {
+  color: $brand-blue-primary;
+}
+
+@mixin gradient-text() {
+  @include gradient-text-fallback();
+  background: linear-gradient(to right, $brand-blue-primary, $brand-blue-lighter 60%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 $xs: 500px;

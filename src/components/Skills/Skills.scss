@@ -1,22 +1,26 @@
 @import '~style';
 
-.Skills {
-  .cardContainer {
-    justify-content: space-between;
-  }
-};
-
 .card {
-  background: $white;
-  border-radius: 5px;
-  box-shadow: 0 50px 60px rgba(#000, 0.4);
+  @extend %card;
   cursor: pointer;
+  flex: 1;
   height: em(480);
-  margin-bottom: em(45);
-  position: relative;
-  width: em(250);
+  margin-right: em(30);
+  @include responsive(md) {
+    flex-basis: 45%;
+    margin-right: 0;
+    max-width: 45%;
+  }
   @include responsive(sm) {
-    width: 100%;
+    flex-basis: 100%;
+    margin-right: 0;
+    max-width: 100%;
+  }
+
+  &:not(.showing):hover {
+    .lowerContainer {
+      transform: translateY(24em);
+    }
   }
 
   i {
@@ -27,6 +31,7 @@
   h3 {
     font-size: em(30);
   }
+
 }
 
 .showing {
@@ -43,7 +48,6 @@
     font-size: 2em;
     opacity: 1;
     transition-delay: 0.3s;
-
     @include responsive(sm) {
       font-size: 2.5em;
     }
@@ -102,6 +106,7 @@
     font-weight: 600;
     opacity: 0;
     padding: em(5) 0;
+    pointer-events: none;
     transition: all ease 0.4s;
     transition-delay: 0s;
   }

@@ -1,0 +1,12 @@
+%card {
+  background: $white;
+  border-radius: 5px;
+  box-shadow: 0 em(50) em(60) rgba(#000, 0.4);
+  margin-bottom: em(45);
+  position: relative;
+}
+
+%gradient-text {
+  @include gradient-text-fallback();
+  @include gradient-text();
+}

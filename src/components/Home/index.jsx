@@ -3,6 +3,8 @@ import styles from './Home.scss';
 
 import About from '../About/';
 import Skills from '../Skills';
+import Work from '../Work';
+import Contact from '../Contact';
 
 const Home = () => (
     <div className="Home">
@@ -20,6 +22,8 @@ const Home = () => (
             <section className={styles.innerWrap}>
                 <About />
                 <Skills />
+                <Work />
+                <Contact />
             </section>
         </div>
     </div>
