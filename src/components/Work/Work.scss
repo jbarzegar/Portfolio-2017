@@ -6,10 +6,9 @@
   }
 }
 
-.card {
+.card,
+.GHcard {
   @extend %card;
-  background: linear-gradient(to top left, darken(#d500f9, 15%), #d500f9);
-  color: $white;
   flex: 1;
   height: em(480);
   @include responsive(sm) {
@@ -17,14 +16,24 @@
     max-width: 100%;
   }
 
+  h4 {
+    font-size: em(30);
+  }
+}
+
+.GHcard {
+  margin-right: em(30);
+  min-width: 30%;
+}
+
+.card {
+  background: linear-gradient(to top left, darken(#d500f9, 15%), #d500f9);
+  color: $white;
+
   &:first-child {
     margin-right: em(30);
     @include responsive(sm) {
       margin-right: 0;
     }
-  }
-
-  h4 {
-    font-size: em(30);
   }
 }
