@@ -6,8 +6,7 @@
   }
 }
 
-.card,
-.GHcard {
+.card {
   @extend %card;
   flex: 1;
   height: em(480);
@@ -21,13 +20,7 @@
   }
 }
 
-.GHcard {
-  margin-right: em(30);
-  min-width: 30%;
-}
-
 .card {
-  background: linear-gradient(to top left, darken(#d500f9, 15%), #d500f9);
   color: $white;
 
   &:first-child {

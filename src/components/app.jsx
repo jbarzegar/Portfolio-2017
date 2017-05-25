@@ -7,7 +7,7 @@ import Nav from './Nav';
 // Style
 import styles from './App.scss';
 
-const App = () => (
+const App = () =>  (
     <div className={styles.App}>
         <Nav />
         <Router>

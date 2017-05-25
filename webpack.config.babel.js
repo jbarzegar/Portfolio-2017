@@ -1,5 +1,6 @@
 /* eslint-disable */
 import webpack from 'webpack';
+import DashboardPlugin from 'webpack-dashboard/plugin';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import autoprefixer from 'autoprefixer';
@@ -9,7 +10,9 @@ import OfflinePlugin from 'offline-plugin';
 import path from 'path';
 const ENV = process.env.NODE_ENV || 'development';
 
-const CSS_MAPS = ENV!=='production';
+const CSS_MAPS = ENV !== 'production';
+
+import envOptions from './env';
 
 module.exports = {
 	context: path.resolve(__dirname, "src"),
@@ -130,13 +133,14 @@ module.exports = {
 		}),
 		new HtmlWebpackPlugin({
 			template: './index.ejs',
-			minify: { collapseWhitespace: true }
+			minify: { collapseWhitespace: true },
+      cmsEndPoint: envOptions.cmsEndpoint
 		}),
 		new CopyWebpackPlugin([
 			{ from: './manifest.json', to: './' },
 			{ from: './favicon.ico', to: './' }
 		])
-	]).concat(ENV==='production' ? [
+	]).concat(ENV === 'production' ? [
 		new webpack.optimize.UglifyJsPlugin({
 			output: {
 				comments: false
@@ -189,7 +193,9 @@ module.exports = {
 			],
 			publicPath: '/'
 		})
-	] : []),
+	] : [
+    new DashboardPlugin()
+  ]),
 
 	stats: { colors: true },
 
@@ -212,6 +218,6 @@ module.exports = {
 		contentBase: './src',
 		historyApiFallback: true,
 		open: false,
-    disableHostCheck: true
+    headers: { "Access-Control-Allow-Origin": "*" }
 	}
 };

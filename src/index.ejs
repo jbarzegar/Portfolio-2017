@@ -6,14 +6,17 @@
             display: none;
         }
     </style>
+    <script async defer>
+        window.cmsEndpoint = '<%= htmlWebpackPlugin.options.cmsEndPoint %>';
+    </script>
 	<% for (var chunk in htmlWebpackPlugin.files.css) { %>
-		<link rel="preload" href="<%= htmlWebpackPlugin.files.css[chunk] %>"  as="style">
+    <link rel="preload" href="<%= htmlWebpackPlugin.files.css[chunk] %>"  as="style">
 	<% } %>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:400,600,700" async>
     <link rel="stylesheet" href="https://cdn.rawgit.com/konpa/devicon/4f6a4b08efdad6bb29f9cc801f5c07e263b39907/devicon.min.css" async>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" async defer>
 	<% for (var chunk in htmlWebpackPlugin.files.chunks) { %>
-		<link rel="preload" href="<%= htmlWebpackPlugin.files.chunks[chunk].entry %>" as="script">
+    <link rel="preload" href="<%= htmlWebpackPlugin.files.chunks[chunk].entry %>" as="script">
 	<% } %>
 	<meta charset="utf-8">
 	<title>James | Full Stack Dev</title>

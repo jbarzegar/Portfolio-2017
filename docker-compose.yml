@@ -1,32 +1,19 @@
 version: '2'
+
 services:
-  mysql:
-    image: mysql:latest
-    container_name: directus_mysql
-    restart: always
-    environment:
-      - MYSQL_ROOT_PASSWORD=password
-      - MYSQL_DATABASE=directus
-      - MYSQL_USER=directus
-      - MYSQL_PASSWORD=directus
-  directus:
-    depends_on:
-       - mysql
-    image: getdirectus/directus:6.4
-    container_name: directus
-    # links:
-    #  - mysql:mysql
-    ports:
-     - "8080:8080"
-    restart: always
-    # Replace ~/Development/directus with your local directus git checkout
-    # volumes:
-    #    - ~/Development/directus:/var/www/directus
-    environment:
-     - MYSQL_USER=directus
-     - MYSQL_PASSWORD=directus
-     - MYSQL_ENV_MYSQL_DATABASE=directus
-     - MYSQL_PORT_3306_TCP_ADDR=mysql
-     - MYSQL_PORT_3306_TCP_PORT=3306
-     - MYSQL_ENV_MYSQL_PASSWORD=directus
-     - MYSQL_ENV_MYSQL_USER=directus
+   db:
+     env_file: ./env/wordpress.env
+     image: mysql:5.7
+     volumes:
+       - db_data:/var/lib/mysql
+     restart: always
+   wordpress:
+     env_file: ./env/db.env
+     depends_on:
+       - db
+     image: wordpress:latest
+     ports:
+       - "8000:80"
+     restart: always
+volumes:
+    db_data:

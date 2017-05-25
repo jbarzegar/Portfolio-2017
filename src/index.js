@@ -1,7 +1,7 @@
 import { h, render } from 'preact';
 // Polyfills
 import 'promise-polyfill';
-import 'isomorphic-fetch';
+// import 'isomorphic-fetch';
 // Styles
 import './style';
 // Router

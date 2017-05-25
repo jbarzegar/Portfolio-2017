@@ -1,4 +1,4 @@
-import Github from './github';
+import CmsProvider from './cms';
 
-export { Github };
-export default { Github };
+export { CmsProvider };
+export default { CmsProvider };

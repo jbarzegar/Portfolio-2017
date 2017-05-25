@@ -1,28 +1,38 @@
 import { h, Component } from 'preact';
 import styles from './Work.scss';
 
-import { Github } from '../../api/';
+import CmsProvider from '../../api/cms';
+
+CmsProvider.getAllWork();
 
 class Work extends Component {
     state = {
-        githubActivity: []
+        work: []
     }
     componentWillMount() {
-        Github.getUserRepos()
-            .then(data => this.setState({ githubActivity: data }))
-            .then(() => console.log(this.state))
-            .catch(err => err);
+        CmsProvider.getAllWork()
+            .then(data => this.setState({ work: data }));
     }
-    renderGithubCards(data) {
+    renderWorkCards(work) {
+        function shade(color, percent) {
+            let f=parseInt(color.slice(1),16),
+                t=percent<0?0:255,
+                p=percent<0?percent*-1:percent,
+                R=f>>16,
+                G=f>>8&0x00FF,
+                B=f&0x0000FF;
+
+            return "#"+(0x1000000+(Math.round((t-R)*p)+R)*0x10000+(Math.round((t-G)*p)+G)*0x100+(Math.round((t-B)*p)+B))
+                .toString(16).slice(1);
+        }
+        const cardStyles = `background: linear-gradient(to top left, ${shade('#d500f9', -0.15)}, #d500f9);`;
         return (
-            <a
-                href={data.html_url}
-                className={`flex align-all-center ${styles.GHcard}`}
+            <div
+                className={`flex align-all-center ${styles.card}`}
+                style={cardStyles}
             >
-                <div>
-                    <h4>{data.name}</h4>
-                </div>
-            </a>
+                <h4>{work.title.rendered}</h4>
+            </div>
         );
     }
     render() {
@@ -32,22 +42,7 @@ class Work extends Component {
                     <h2>What I'm plugging away at.</h2>
                     <h3>Keep in mind these are all personal projects, see my resume for professinal work</h3>
                     <section className={`flex justify-sb flex-wrap`}>
-                        <div className={`flex align-all-center ${styles.card}`}>
-                            <h4>YP_bot</h4>
-                        </div>
-                        <div className={`flex align-all-center ${styles.card}`}>
-                            <h4>YP_bot</h4>
-                        </div>
-                    </section>
-                </section>
-                <section className="githubActivity">
-                    <h2>My most recent github activity</h2>
-                    <section className="flex justify-sb flex-wrap">
-                        {/* Render all cards */}
-                        {
-                            this.state.githubActivity
-                                .map(thing => this.renderGithubCards(thing))
-                        }
+                        { this.state.work.map(this.renderWorkCards) }
                     </section>
                 </section>
             </div>
