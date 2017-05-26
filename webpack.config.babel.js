@@ -218,6 +218,6 @@ module.exports = {
 		contentBase: './src',
 		historyApiFallback: true,
 		open: false,
-    headers: { "Access-Control-Allow-Origin": "*" }
+    disableHostCheck: true
 	}
 };
