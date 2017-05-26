@@ -25,7 +25,8 @@ class Work extends Component {
             return "#"+(0x1000000+(Math.round((t-R)*p)+R)*0x10000+(Math.round((t-G)*p)+G)*0x100+(Math.round((t-B)*p)+B))
                 .toString(16).slice(1);
         }
-        const cardStyles = `background: linear-gradient(to top left, ${shade('#d500f9', -0.15)}, #d500f9);`;
+        console.log(work);
+        const cardStyles = `background: linear-gradient(to top left, ${shade(work.brand_color, -0.15)}, ${work.brand_color});`;
         return (
             <div
                 className={`flex align-all-center ${styles.card}`}
