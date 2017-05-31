@@ -1,4 +1,7 @@
 import { h, render } from 'preact';
+// Redux
+import { Provider } from 'preact-redux';
+import store from './store/';
 // Polyfills
 import 'promise-polyfill';
 // import 'isomorphic-fetch';
@@ -12,4 +15,4 @@ if (process.env.NODE_ENV==='production') {
     require('./pwa');
 }
 
-render(<Router />, document.body);
+render(<Provider store={store}><Router /></Provider>, document.body);

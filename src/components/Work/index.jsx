@@ -1,17 +1,12 @@
 import { h, Component } from 'preact';
+import { Actions } from 'jumpstate';
+import { Link } from 'preact-router';
+import { connect } from 'preact-redux';
 import styles from './Work.scss';
 
-import CmsProvider from '../../api/cms';
-
-CmsProvider.getAllWork();
-
 class Work extends Component {
-    state = {
-        work: []
-    }
-    componentWillMount() {
-        CmsProvider.getAllWork()
-            .then(data => this.setState({ work: data }));
+    saveScrollPosition() {
+        Actions.saveScroll(window.scrollY);
     }
     renderWorkCards(work) {
         function shade(color, percent) {
@@ -25,15 +20,16 @@ class Work extends Component {
             return "#"+(0x1000000+(Math.round((t-R)*p)+R)*0x10000+(Math.round((t-G)*p)+G)*0x100+(Math.round((t-B)*p)+B))
                 .toString(16).slice(1);
         }
-        console.log(work);
         const cardStyles = `background: linear-gradient(to top left, ${shade(work.brand_color, -0.15)}, ${work.brand_color});`;
         return (
-            <div
+            <Link
+                href={`/work/${work.slug}`}
                 className={`flex align-all-center ${styles.card}`}
                 style={cardStyles}
+                onClick={this.saveScrollPosition}
             >
                 <h4>{work.title.rendered}</h4>
-            </div>
+            </Link>
         );
     }
     render() {
@@ -43,7 +39,7 @@ class Work extends Component {
                     <h2>What I'm plugging away at.</h2>
                     <h3>Keep in mind these are all personal projects, see my resume for professinal work</h3>
                     <section className={`flex justify-sb flex-wrap`}>
-                        { this.state.work.map(this.renderWorkCards) }
+                        { Object.keys(this.props.work).map(el => this.renderWorkCards(this.props.work[el])) }
                     </section>
                 </section>
             </div>
@@ -51,4 +47,4 @@ class Work extends Component {
     }
 }
 
-export default Work;
+export default connect(state => state)(Work);
