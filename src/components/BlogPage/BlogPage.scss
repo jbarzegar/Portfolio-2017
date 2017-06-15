@@ -1,19 +1,8 @@
 @import '~style';
-
-.Work {
-  h3 {
-    font-size: em(24);
-  }
-
-  .viewButton {
-    @extend %button-large;
-  }
-}
+@import '~style/blog';
 
 .card {
   @extend %card;
-  color: $white;
-  cursor: pointer;
   flex: 1;
   height: em(480);
   @include responsive(sm) {
@@ -26,16 +15,25 @@
     transition: font-size ease 0.3s;
   }
 
-  &:hover {
-    h4 {
-      font-size: em(35);
-    }
-  }
-
   &:first-child {
     margin-right: em(30);
     @include responsive(sm) {
       margin-right: 0;
     }
   }
+}
+
+.readMore {
+  @extend %button-large;
+}
+
+.card h4,
+.readMoreContainer,
+.excerpt {
+  margin: auto;
+  width: 80%;
+}
+
+.cardWrap {
+  padding: em(50);
 }

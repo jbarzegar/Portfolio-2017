@@ -1,0 +1,38 @@
+@import '~style';
+
+.innerWrap {
+  padding: em(30);
+}
+
+.innerWrap,
+.cardWrap {
+  width: 100%;
+}
+
+.cardWrap {
+  flex: 1 0 50%;
+  padding: 0 em(10);
+  @include responsive(sm) {
+    flex-basis: 100%;
+  }
+}
+
+.card {
+  @extend %card;
+  color: $white;
+  cursor: pointer;
+  flex: 1 0 50%;
+  height: em(480);
+  width: 100%;
+
+  h4 {
+    font-size: em(30);
+    transition: font-size ease 0.3s;
+  }
+
+  &:hover {
+    h4 {
+      font-size: em(35);
+    }
+  }
+}

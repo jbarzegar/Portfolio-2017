@@ -18,7 +18,7 @@ class About extends Component {
     }
     render() {
         return (
-            <section className={styles.About}>
+            <section className={styles.About} id="About">
                 <WpContent content={this.state.content} />
             </section>
         );

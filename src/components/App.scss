@@ -1,11 +1,13 @@
-@import '~style';
+@import '~style/vendor';
 @import '~style/type';
+
 
 * {
   box-sizing: border-box;
 }
 
 body {
+  background-color: #ecf0f1;
   display: block;
   font-size: 1vw;
   @include responsive(lg) {

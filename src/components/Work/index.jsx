@@ -1,47 +1,55 @@
 import { h, Component } from 'preact';
-import { Actions } from 'jumpstate';
-import { Link } from 'preact-router';
 import { connect } from 'preact-redux';
+import { Link } from 'preact-router';
+import { Actions } from 'jumpstate';
 import styles from './Work.scss';
+import shade from '../../helpers/shade';
+
+import Sidebar from '../Sidebar/';
 
 class Work extends Component {
-    saveScrollPosition() {
-        Actions.saveScroll(window.scrollY);
+    state = {
+        work: {
+            content: null,
+            class: 'hidden'
+        }
+    }
+    constructor() {
+        super();
+        this.showSidebar = this.showSidebar.bind(this);
+    }
+    showSidebar(state) {
+        Actions.openSidebar(state);
     }
     renderWorkCards(work) {
-        function shade(color, percent) {
-            let f=parseInt(color.slice(1),16),
-                t=percent<0?0:255,
-                p=percent<0?percent*-1:percent,
-                R=f>>16,
-                G=f>>8&0x00FF,
-                B=f&0x0000FF;
-
-            return "#"+(0x1000000+(Math.round((t-R)*p)+R)*0x10000+(Math.round((t-G)*p)+G)*0x100+(Math.round((t-B)*p)+B))
-                .toString(16).slice(1);
-        }
         const cardStyles = `background: linear-gradient(to top left, ${shade(work.brand_color, -0.15)}, ${work.brand_color});`;
         return (
-            <Link
-                href={`/work/${work.slug}`}
+            <div
                 className={`flex align-all-center ${styles.card}`}
                 style={cardStyles}
-                onClick={this.saveScrollPosition}
+                onClick={() => this.showSidebar(work)}
             >
                 <h4>{work.title.rendered}</h4>
-            </Link>
+            </div>
         );
     }
     render() {
         return (
-            <div className={styles.Work}>
+            <div className={styles.Work} id="Work">
                 <section className="pinnedWork">
                     <h2>What I'm plugging away at.</h2>
                     <h3>Keep in mind these are all personal projects, see my resume for professinal work</h3>
                     <section className={`flex justify-sb flex-wrap`}>
-                        { Object.keys(this.props.work).map(el => this.renderWorkCards(this.props.work[el])) }
+                        { Object.keys(this.props.work).slice(0, 2)
+                                .map(el => this.renderWorkCards(this.props.work[el])) }
                     </section>
                 </section>
+                <section className="flex align-all-center">
+                    <Link href='/work' className={styles.viewButton}>
+                        View all work
+                    </Link>
+                </section>
+                <Sidebar />
             </div>
         );
     }

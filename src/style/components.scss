@@ -1,7 +1,7 @@
 %card {
   background: $white;
   border-radius: 5px;
-  box-shadow: 0 em(50) em(60) rgba(#000, 0.4);
+  box-shadow: 0 em(5) em(50) rgba(#000, 0.2);
   margin-bottom: em(45);
   position: relative;
 }
@@ -9,4 +9,38 @@
 %gradient-text {
   @include gradient-text-fallback();
   @include gradient-text();
+}
+
+%button {
+  background: $brand-blue-primary;
+  border: 0;
+  border-radius: 3px;
+  box-shadow: 0 em(5) em(10) rgba(#000, 0.3);
+  color: $white;
+  cursor: pointer;
+  font-size: em(14);
+  height: em(40);
+  outline: none;
+  overflow: hidden;
+  transition: background 1s;
+  width: em(100);
+
+  &:hover {
+    background: lighten($brand-blue-primary, 8%);
+  }
+}
+
+%button-large {
+  @extend %button;
+  align-items: center;
+  display: flex;
+  height: em(50);
+  justify-content: center;
+  width: em(150);
+
+  @include responsive(sm) {
+    font-size: em(25);
+    height: em(50);
+    width: 100%;
+  }
 }

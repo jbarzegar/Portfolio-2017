@@ -9,7 +9,12 @@ class WpContent extends Component {
     }
     render() {
         return (
-            <div className="WP-Content" />
+            // Check for className prop if there is one append them.
+            <div
+                className={`WP-Content ${this.props.className
+                    ? this.props.className
+                    : ''}`}
+            />
         );
     }
 }

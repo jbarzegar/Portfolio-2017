@@ -16,7 +16,6 @@ h2 {
 }
 
 h2 {
-  @extend %gradient-text;
   font-size: em(65);
 
   span {
@@ -25,6 +24,10 @@ h2 {
 
   @include responsive(sm) {
     font-size: em(40);
+  }
+
+  &:not(.no-gradient) {
+    @extend %gradient-text;
   }
 }
 

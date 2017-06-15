@@ -19,7 +19,7 @@ const handleClick = (event) => {
 };
 
 const Skills = () => (
-    <div className={styles.Skills}>
+    <div className={styles.Skills} id="Skills">
         <h2>The Toolkit.</h2>
         <section className={`flex flex-wrap justify-sb`}>
             <section className={`flex-col align-all-center ${styles.card} ${styles.javascriptCard}`} onClick={handleClick}>

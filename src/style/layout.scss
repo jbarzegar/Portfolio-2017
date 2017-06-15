@@ -39,7 +39,16 @@
   justify-content: space-between;
 }
 
+%align-all-center {
+  @extend %align-center;
+  @extend %justify-center;
+};
+
 .align-all-center {
   @extend %align-center;
   @extend %justify-center;
 };
+
+.no-scroll {
+  overflow-y: hidden;
+}
