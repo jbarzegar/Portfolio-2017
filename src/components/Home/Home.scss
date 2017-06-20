@@ -42,4 +42,8 @@
   @include responsive(sm) {
     width: 87%;
   }
+
+  h2 {
+    @extend %gradient-text;
+  }
 }

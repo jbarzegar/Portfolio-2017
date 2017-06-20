@@ -8,6 +8,7 @@
     </style>
     <script async defer>
         window.cmsEndpoint = '<%= htmlWebpackPlugin.options.cmsEndPoint %>';
+        window.resumeEndpoint = '<%= htmlWebpackPlugin.options.resumeEndpoint %>'
     </script>
 	<% for (var chunk in htmlWebpackPlugin.files.css) { %>
     <link rel="preload" href="<%= htmlWebpackPlugin.files.css[chunk] %>"  as="style">

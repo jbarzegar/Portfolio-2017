@@ -1,7 +1,7 @@
 import { h, Component } from 'preact';
 import { connect } from 'preact-redux';
 import { Link } from 'preact-router';
-import { Actions } from 'jumpstate';
+import { Actions, getState } from 'jumpstate';
 import styles from './Work.scss';
 import shade from '../../helpers/shade';
 
@@ -17,6 +17,13 @@ class Work extends Component {
     constructor() {
         super();
         this.showSidebar = this.showSidebar.bind(this);
+    }
+    handleClick() {
+        const routes = getState().scroll;
+        const currentPos = window.scrollY;
+        routes[window.location.pathname] = currentPos;
+        // Save current route position
+        Actions.saveScrollPos(routes);
     }
     showSidebar(state) {
         Actions.openSidebar(state);
@@ -38,14 +45,18 @@ class Work extends Component {
             <div className={styles.Work} id="Work">
                 <section className="pinnedWork">
                     <h2>What I'm plugging away at.</h2>
-                    <h3>Keep in mind these are all personal projects, see my resume for professinal work</h3>
+                    <h3>
+                        Keep in mind these are all personal projects, see my
+                        <a href={window.resumeEndpoint} class={styles.link}> resume </a>
+                        for professinal work
+                    </h3>
                     <section className={`flex justify-sb flex-wrap`}>
                         { Object.keys(this.props.work).slice(0, 2)
                                 .map(el => this.renderWorkCards(this.props.work[el])) }
                     </section>
                 </section>
                 <section className="flex align-all-center">
-                    <Link href='/work' className={styles.viewButton}>
+                    <Link href='/work' onClick={this.handleClick} className={styles.viewButton}>
                         View all work
                     </Link>
                 </section>

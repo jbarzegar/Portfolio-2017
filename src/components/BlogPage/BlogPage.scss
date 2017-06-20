@@ -1,25 +1,28 @@
 @import '~style';
-@import '~style/blog';
+
+.cardWrap {
+  flex: 1 0 50%;
+  padding: 0 10px;
+
+  @include responsive(sm) {
+    flex-basis: 100%;
+    max-width: 100%;
+  }
+}
 
 .card {
   @extend %card;
-  flex: 1;
   height: em(480);
+
   @include responsive(sm) {
     flex-basis: 100%;
+    height: auto;
     max-width: 100%;
   }
 
   h4 {
     font-size: em(30);
     transition: font-size ease 0.3s;
-  }
-
-  &:first-child {
-    margin-right: em(30);
-    @include responsive(sm) {
-      margin-right: 0;
-    }
   }
 }
 
@@ -31,9 +34,13 @@
 .readMoreContainer,
 .excerpt {
   margin: auto;
-  width: 80%;
+  width: 100%;
 }
 
-.cardWrap {
+.card {
+  padding: em(30) em(25);
+}
+
+.cardContainerWrap {
   padding: em(50);
 }

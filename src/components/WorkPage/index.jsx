@@ -1,6 +1,6 @@
-import { h } from 'preact';
+import { h, Component } from 'preact';
 import { connect } from 'preact-redux';
-import { Actions } from 'jumpstate';
+import { Actions, getState } from 'jumpstate';
 import styles from './WorkPage.scss';
 
 // Preact components
@@ -25,16 +25,24 @@ const renderWorkCards = (work) => {
 
 const showSidebar = work => Actions.openSidebar(work);
 
-const WorkPage = ({ work }) => (
-    <section className="WorkPage">
-        <div className={`${styles.innerWrap} flex-col align-center`}>
-            <h2>Oh hey look, all the work I've done... Go ahead take a look</h2>
-            <div className={`${styles.cardWrap} flex flex-wrap justify-sb`}>
-                { Object.keys(work).map(el => renderWorkCards(work[el])) }
-            </div>
-        </div>
-        <Sidebar />
-    </section>
-);
+
+class WorkPage extends Component {
+    componentWillMount() {
+        window.scrollTo(null, getState().scroll['/work']);
+    }
+    render() {
+        return (
+            <section className="WorkPage">
+                <div className={`${styles.innerWrap} flex-col align-center`}>
+                    <h2>Oh hey look, all the work I've done... Go ahead take a look</h2>
+                    <div className={`${styles.cardWrap} flex flex-wrap justify-sb`}>
+                        { Object.keys(this.props.work).map(el => renderWorkCards(this.props.work[el])) }
+                    </div>
+                </div>
+                <Sidebar />
+            </section>
+        );
+    }
+}
 
 export default connect(state => state)(WorkPage);

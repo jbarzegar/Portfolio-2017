@@ -11,15 +11,15 @@ const letBrowserScroll = () => document.body.classList.remove('no-scroll');
 const closeSidebar = () => Actions.closeSidebar();
 const handleEscape = event => console.log(event);
 
-const Sidebar = ({ sidebar }) => {
-    if (sidebar.isOpen) {
+const Sidebar = ({ isOpen, content }) => {
+    if (isOpen) {
         stopBrowserScroll();
     } else {
         letBrowserScroll();
     }
     return (
         <div
-            className={`${styles.workSideBarWrap} ${sidebar.isOpen ? styles.showing : styles.hidden }`}
+            className={`${styles.workSideBarWrap} ${isOpen ? styles.showing : styles.hidden }`}
         >
             <section
                 className={styles.workBackgroundFilter}
@@ -29,10 +29,10 @@ const Sidebar = ({ sidebar }) => {
             <section className={styles.workSideBar}>
                 <button onClick={closeSidebar} class={`${styles.closeButton} fa fa-times`} />
                 {/* Load when content isn't null */}
-                { sidebar.content ? (
+                { content ? (
                     <div className={styles.contentWrap}>
-                        <h2>{sidebar.content.title.rendered}</h2>
-                        <WpContent content={sidebar.content.content.rendered} />
+                        <h2>{content.title.rendered}</h2>
+                        <WpContent content={content.content.rendered} />
                         <button className={styles.viewButton}>View Live</button>
                     </div>
                 ) : ''}
@@ -41,4 +41,4 @@ const Sidebar = ({ sidebar }) => {
     );
 };
 
-export default connect(state => state)(Sidebar);
+export default connect(state => state.sidebar)(Sidebar);

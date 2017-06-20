@@ -1,0 +1,68 @@
+@import '~style';
+
+.postTitle {
+  @extend %gradient-text;
+  text-align: center;
+}
+
+.post {
+  background: $white;
+  padding: em(10) em(35);
+
+  h2 {
+    background: none;
+    color: $brand-blue-primary;
+    font-size: em(40);
+  }
+
+  div {
+    margin: 0 auto;
+    width: 50%;
+    @include responsive(sm) {
+      width: 100%;
+    }
+  }
+}
+
+.PostPage {
+  h3 {
+    font-size: em(35);
+  }
+
+  h4 {
+    font-size: em(30);
+    font-weight: 600;
+  }
+
+  ol {
+    padding-left: 0;
+  }
+
+  ol,
+  ul {
+    font-size: em(23);
+    list-style-position: inside;
+  }
+
+  ul {
+    list-style-type: none;
+  }
+
+  ul li::before {
+    content: '\2014';
+    padding-right: em(5);
+  }
+
+  img {
+    width: 100%;
+  }
+
+  blockquote {
+    border-left: em(5) solid $brand-blue-lighter;
+    color: rgba(#000, 0.6);
+    font-style: italic;
+    margin-left: 0;
+    padding-left: em(20);
+  }
+}
+

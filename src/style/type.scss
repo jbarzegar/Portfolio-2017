@@ -26,13 +26,13 @@ h2 {
     font-size: em(40);
   }
 
-  &:not(.no-gradient) {
+  .gradient {
     @extend %gradient-text;
   }
 }
 
 p {
-  font-size: em(25);
+  font-size: em(23);
   font-weight: 500;
   line-height: 1.5;
 }

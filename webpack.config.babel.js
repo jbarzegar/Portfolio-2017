@@ -14,6 +14,8 @@ const CSS_MAPS = ENV !== 'production';
 
 import envOptions from './env';
 
+console.log(envOptions);
+
 module.exports = {
 	context: path.resolve(__dirname, "src"),
 	entry: './index.js',
@@ -33,7 +35,10 @@ module.exports = {
 		],
 		alias: {
 			components: path.resolve(__dirname, "src/components"),    // used for tests
-			style: path.resolve(__dirname, "src/style")
+			style: path.resolve(__dirname, "src/style"),
+			lib: path.resolve(__dirname, "src/lib"),
+      'react': 'preact-compat',
+      'react-dom': 'preact-compat'
 		}
 	},
 
@@ -134,7 +139,8 @@ module.exports = {
 		new HtmlWebpackPlugin({
 			template: './index.ejs',
 			minify: { collapseWhitespace: true },
-      cmsEndPoint: envOptions.cmsEndpoint
+      cmsEndPoint: envOptions.cmsEndpoint,
+      resumeEndpoint: envOptions.resumeEndpoint
 		}),
 		new CopyWebpackPlugin([
 			{ from: './manifest.json', to: './' },
@@ -218,6 +224,6 @@ module.exports = {
 		contentBase: './src',
 		historyApiFallback: true,
 		open: false,
-    disableHostCheck: true
+    disableHostCheck: true,
 	}
 };

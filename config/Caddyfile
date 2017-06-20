@@ -1,0 +1,14 @@
+api.jamescodes.io {
+    proxy / http://localhost:8080 {
+        transparent
+    }
+}
+
+jamescodes.io {
+    gzip
+    log /var/logs/portfolio-2017.log
+    root /var/www/portfolio-2017
+    errors {
+        * index.html
+    }
+}

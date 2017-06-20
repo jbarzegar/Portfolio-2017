@@ -3,7 +3,7 @@
 .card {
   @extend %card;
   flex: 1;
-  height: em(480);
+  height: auto;
   @include responsive(sm) {
     flex-basis: 100%;
     max-width: 100%;
@@ -30,5 +30,9 @@
 .readMoreContainer,
 .excerpt {
   margin: auto;
-  width: 80%;
+  width: 100%;
+}
+
+.card {
+  padding: em(30) em(25);
 }

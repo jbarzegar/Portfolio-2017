@@ -2,6 +2,10 @@
 
 .innerWrap {
   padding: em(30);
+
+  h2 {
+    @extend %gradient-text;
+  }
 }
 
 .innerWrap,
